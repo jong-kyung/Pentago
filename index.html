@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentago</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            outline: none;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: black
+        }
+
+        h1 {
+            text-align: center;
+            padding: 1rem;
+            margin: auto;
+        }
+
+        .wrap {
+            max-width: 1440px;
+            width: 100%;
+            margin: auto
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 500px;
+            height: 500px;
+            margin: auto
+        }
+
+        .container>li {
+            position: relative;
+            border: 1px solid black
+        }
+
+        .container>li ul {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            height: 100%;
+            background-color: burlywood;
+            position: absolute;
+        }
+
+        .container ul li {
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .black {
+            background-color: black;
+        }
+
+        .white {
+            background-color: white;
+        }
+
+        .controller {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            justify-items: center;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 1rem;
+        }
+
+        .controller::before {
+            content: '<판돌리기>';
+            position: absolute;
+            top: 0px;
+            transform: translateY(-100%);
+        }
+
+        .controller>div {
+            display: flex;
+            border: 1px solid black;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .controller button {
+            width: 100%;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: ease all .5s;
+        }
+
+        .controller i {
+            font-size: 1.3rem;
+            color: #8e8e8e;
+            transition: ease all .5s;
+            pointer-events: none;
+        }
+
+        .controller button:hover i {
+            transform: scale(1.2);
+            color: #020202;
+        }
+
+        @media(max-width:720px) {
+            .container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                width: 300px;
+                height: 300px;
+                margin: auto
+            }
+
+            .controller {
+                width: 150px;
+                height: 150px;
+                margin-top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1><a href="https://namu.wiki/w/%ED%8E%9C%ED%83%80%EA%B3%A0">Pentago</a></h1>
+    <div class="wrap">
+        <ul class="container">
+            <li class="board1" data-num="01">
+                <ul>
+                    <li id="00"></li>
+                    <li id="01"></li>
+                    <li id="02"></li>
+                    <li id="10"></li>
+                    <li id="11"></li>
+                    <li id="12"></li>
+                    <li id="20"></li>
+                    <li id="21"></li>
+                    <li id="22"></li>
+                </ul>
+            </li>
+            <li class="board2" data-num="02">
+                <ul>
+                    <li id="03"></li>
+                    <li id="04"></li>
+                    <li id="05"></li>
+                    <li id="13"></li>
+                    <li id="14"></li>
+                    <li id="15"></li>
+                    <li id="23"></li>
+                    <li id="24"></li>
+                    <li id="25"></li>
+                </ul>
+            </li>
+            <li class="board3" data-num="03">
+                <ul>
+                    <li id="30"></li>
+                    <li id="31"></li>
+                    <li id="32"></li>
+                    <li id="40"></li>
+                    <li id="41"></li>
+                    <li id="42"></li>
+                    <li id="50"></li>
+                    <li id="51"></li>
+                    <li id="52"></li>
+                </ul>
+            </li>
+            <li class="board4" data-num="04">
+                <ul>
+                    <li id="33"></li>
+                    <li id="34"></li>
+                    <li id="35"></li>
+                    <li id="43"></li>
+                    <li id="44"></li>
+                    <li id="45"></li>
+                    <li id="53"></li>
+                    <li id="54"></li>
+                    <li id="55"></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="controller">
+            <div data-num="01">
+                <button class="left">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                </button>
+                <button class="right">
+                    <i class="fa fa-repeat" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div data-num="02">
+                <button class="left">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                </button>
+                <button class="right">
+                    <i class="fa fa-repeat" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div data-num="03">
+                <button class="left">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                </button>
+                <button class="right">
+                    <i class="fa fa-repeat" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div data-num="04">
+                <button class="left">
+                    <i class="fa fa-undo" aria-hidden="true"></i>
+                </button>
+                <button class="right">
+                    <i class="fa fa-repeat" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
